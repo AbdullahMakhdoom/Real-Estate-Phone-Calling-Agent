@@ -1,0 +1,6 @@
+env/
+.env
+.gradio
+.venv
+.ruff_cache
+*.cpython-312.pyc

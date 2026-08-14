@@ -1,0 +1,30 @@
+services:
+  phone-calling-agent-api:
+    container_name: phone-calling-agent-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    networks:
+      - phone-calling-agent-network
+    deploy:
+      resources:
+        limits:
+          cpus: '4' 
+          memory: 4G   
+        reservations:
+          cpus: '4'    
+          memory: 4G   
+
+networks:
+  phone-calling-agent-network:
+    name: phone-calling-agent-network
