@@ -44,3 +44,10 @@ start-ngrok-tunnel:
 	@echo "Remember to close the tunnel when you're done!"
 	sleep 5 # Wait for the tunnel to be ready
 	ngrok http 8000
+
+scrapper:
+	uv run python scripts/graana_scraper.py \
+		--url https://www.graana.com/sale/house-sale-islamabad-1/ \
+		--details \
+		--out data/islamabad_properties.csv
+
